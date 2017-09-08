@@ -1,0 +1,84 @@
+//-------------------------------------------------------------------------------//
+//--SIMPLY WEATHER WEB APP STYLES------------------------------------------------//
+//-------------------------------------------------------------------------------//
+
+
+// Normalize & imports
+//-------------------------------------------------------------------------------
+
+// Include common variables
+@import "variables";
+
+// Include mixins, functions, etc.
+@import "utility/base";
+
+
+// Global styles
+//-------------------------------------------------------------------------------
+
+// Reset box-sizing for all elements
+@include border-box;
+
+html {
+    @include fluid-type(320px, 1200px, 16px, 18px);
+}
+
+html, body, .app { height: 100%; }
+
+body {
+    background-color: #999;
+    background-image: linear-gradient(to right, #4776e6, #8e54e9);
+    margin: 0;
+    padding: 0;
+    color: #fff;
+    font-family: $montserrat;
+    font-size: 100%;
+    font-weight: 500;
+    line-height: 1.5;
+}
+
+.app {
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+}
+
+.app__meta {
+    font-size: 0.65em;
+    text-align: center;
+}
+
+.app__meta a {
+    color: #fff;
+    text-decoration: none;
+
+    &:hover,
+    &:focus {
+        color: $grey;
+    }
+}
+
+
+// Patterns
+//-------------------------------------------------------------------------------
+
+@import "patterns/cards";
+@import "patterns/icons";
+@import "patterns/form";
+@import "patterns/buttons";
+@import "patterns/weather";
+
+
+// Miscellaneous
+//-------------------------------------------------------------------------------
+
+.fade-out {
+    transition: opacity 0.3s ease-out;
+    opacity: 0;
+}
+
+@include selection {
+    background-color: $grey;
+    color: #fff;
+}

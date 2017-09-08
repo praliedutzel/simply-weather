@@ -1,0 +1,25 @@
+//-------------------------------------------------------------------------------
+// Icons
+//-------------------------------------------------------------------------------
+
+.icon {
+    background-image: url("../icons/compass.svg");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    width: 50px;
+    height: 50px;
+    margin: auto;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.icon--clear-day { background-image: url("../icons/clear-day.svg"); }
+.icon--clear-night { background-image: url("../icons/clear-night.svg"); }
+.icon--cloudy { background-image: url("../icons/cloudy.svg"); }
+.icon--foggy { background-image: url("../icons/foggy.svg"); }
+.icon--partly-cloudy-day { background-image: url("../icons/partly-cloudy-day.svg"); }
+.icon--partly-cloudy-night { background-image: url("../icons/partly-cloudy-night.svg"); }
+.icon--rain { background-image: url("../icons/rain.svg"); }
+.icon--sleet { background-image: url("../icons/sleet.svg"); }
+.icon--snow { background-image: url("../icons/snow.svg"); }
+.icon--thunderstorm { background-image: url("../icons/thunderstorm.svg"); }
+.icon--wind { background-image: url("../icons/wind.svg"); }

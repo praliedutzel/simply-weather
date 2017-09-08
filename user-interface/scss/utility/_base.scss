@@ -1,0 +1,18 @@
+//-------------------------------------------------------------------------------//
+//---SASS UTILITY BASE-----------------------------------------------------------//
+//-------------------------------------------------------------------------------//
+
+// Normalize.css renders elements consistently across browsers
+@import "normalize";
+
+// Mixins to handle media queries and other responsive elements
+@import "responsive-mixins";
+
+// Mixins that alter the styling of elements
+@import "style-mixins";
+
+// Mixins that include commonly used rules not necessarily associated with style
+@import "utility-mixins";
+
+// Sass functions
+@import "functions";

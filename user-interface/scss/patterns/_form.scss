@@ -1,0 +1,36 @@
+//-------------------------------------------------------------------------------
+// Form Elements
+//-------------------------------------------------------------------------------
+
+.form__label {
+    display: block;
+    color: #999;
+    line-height: 1.25;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-align: left;
+    position: absolute;
+    transition: all 0.3s;
+    transform: translateY(calc(-100% - 1em));
+    pointer-events: none;
+}
+
+.form__input:focus + .form__label,
+.form__label.is-active {
+    font-size: 0.85em;
+    transform: translateY(0.5em);
+}
+
+.form__input {
+    width: 100%;
+    padding: 1em;
+    border: none;
+    border-bottom: 2px solid $grey;
+}
+
+.form__message {
+    margin-top: 2em;
+    margin-bottom: 0;
+    font-size: 0.8em;
+    font-weight: bold;
+}

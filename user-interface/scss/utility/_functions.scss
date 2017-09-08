@@ -1,0 +1,63 @@
+//-------------------------------------------------------------------------------//
+//---FUNCTIONS-------------------------------------------------------------------//
+//-------------------------------------------------------------------------------//
+
+
+// Unit Functions
+//-------------------------------------------------------------------------------
+
+// Used to remove the units from a given value
+@function strip-units($value) {
+    @return $value / ($value * 0 + 1);
+}
+
+// Convert pixels to EMs
+@function px2em($pixel, $base-font-size: 16px) {
+    $em: $pixel / $base-font-size;
+    @return $em * 1em;
+}
+
+// Convert pixels to REMs
+@function px2rem($pixel, $base-font-size: 16px) {
+    $rem: $pixel / $base-font-size;
+    @return $rem * 1rem;
+}
+
+// Used to calculate percentages from pixel values
+@function calc-pct($target, $container) {
+    @return ($target / $container) * 100%;
+}
+
+
+// Z-Index Management
+//-------------------------------------------------------------------------------
+
+// Used in conjunction with the $z-layers map defined in the variables file
+@function z($layer) {
+    @return map-get($z-layers, $layer);
+}
+
+
+// Miscellaneous
+//-------------------------------------------------------------------------------
+
+// Used to replace part of a string with another value
+@function str-replace($string, $search, $replace: '') {
+    $index: str-index($string, $search);
+
+    @if $index {
+        @return str-slice($string, 1, $index - 1) + $replace + str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+    }
+
+    @return $string;
+}
+
+// Used to adjust the font color based on the provided background color
+@function set-text-color($color) {
+    @if (lightness($color) > 50) {
+        @return #000;
+    }
+    @else {
+        @return #fff;
+    }
+}

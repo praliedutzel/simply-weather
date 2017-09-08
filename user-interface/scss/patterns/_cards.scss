@@ -1,0 +1,54 @@
+//-------------------------------------------------------------------------------
+// Cards
+//-------------------------------------------------------------------------------
+
+.card {
+    width: 100%;
+    max-width: 540px;
+    margin: auto;
+    color: #16222A;
+    position: relative;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
+}
+
+.card__header {
+    width: 100%;
+    height: 80px;
+    background-color: #16222A;
+    position: relative;
+    border-top-left-radius: 0.25em;
+    border-top-right-radius: 0.25em;
+}
+
+.card__icon {
+    background-color: #fff;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    top: 40px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    position: absolute;
+    display: flex;
+}
+
+.card__content {
+    background-color: #fff;
+    padding: 2em;
+    text-align: center;
+    border-bottom-left-radius: 0.25em;
+    border-bottom-right-radius: 0.25em;
+    transition: all 0.3s;
+}
+
+.card__title {
+    margin-top: 0.5em;
+    margin-bottom: 0;
+    font-weight: 700;
+    font-size: 1.5em;
+}
+
+.card__subtitle {
+    margin-top: 0.25em;
+}

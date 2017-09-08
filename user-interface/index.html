@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=egde">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simply Weather | By Pralie Dutzel</title>
+    <link rel="stylesheet" href="css/global.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+
+    <!--[if IE]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+    <div class="app">
+        <div class="card">
+            <header class="card__header">
+                <div class="card__icon">
+                    <i class="icon"></i>
+                </div>
+            </header>
+            <div class="card__content">
+                <div id="initialView">
+                    <p class="card__title">Simply Weather</p>
+                    <p class="card__subtitle">View the current weather for your area:</p>
+                    
+                    <form id="form">
+                        <input type="text" name="zip" id="zip" class="form__input">
+                        <label for="zip" class="form__label">Zip Code</label>
+
+                        <input type="submit" id="submit" class="button" value="Check Weather">
+
+                        <p class="form__message"></p>
+                    </form>
+                </div>
+
+                <div id="loadingView" style="display: none;">
+                    <p class="card__title">Loading...</p>
+                </div>
+
+                <div id="errorView" style="display: none;">
+                    <p class="card__title"></p>
+                    <button class="button button--small reset">Try Again</button>
+                </div>
+
+                <div id="outputView" style="display: none;">
+                    <p id="currently" class="card__title"></p>
+                    <p id="location" class="card__subtitle"></p>
+
+                    <ul id="weather" class="weather-details">
+                        <li class="weather-details__item">
+                            <span class="weather-details__label">Humidity</span>
+                            <span class="weather-details__value"><span id="humidity">56</span>%</span>
+                        </li>
+                        <li class="weather-details__item">
+                            <span class="weather-details__label">Temperature</span>
+                            <span class="weather-details__value"><span id="temp">104</span>&deg;</span>
+                        </li>
+                        <li class="weather-details__item">
+                            <span class="weather-details__label">Wind</span>
+                            <span class="weather-details__value"><span id="wind">5</span> <small>MPH</small></span>
+                        </li>
+                    </ul>
+
+                    <button class="button button--small reset">Check Another Zip Code</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="app__meta">
+            <p>Powered by <a href="https://darksky.net/poweredby/" target="_blank" rel="noopener noreferrer">Dark Sky</a> and <a href="https://www.zipcodeapi.com/" target="_blank" rel="noopener noreferrer">ZipCodeAPI</a> &nbsp; | &nbsp; Built by <a href="http://praliedutzel.com/" target="_blank" rel="noopener noreferrer">Pralie Dutzel</a></p>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="js/app.min.js"></script>
+    
+</body>
+</html>

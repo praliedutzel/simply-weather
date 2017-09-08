@@ -1,0 +1,172 @@
+//-------------------------------------------------------------------------------//
+//---STYLE MIXINS----------------------------------------------------------------//
+//-------------------------------------------------------------------------------//
+
+
+// Positioning Mixins
+//-------------------------------------------------------------------------------
+
+@mixin trbl($top: null, $right: null, $bottom: null, $left: null) {
+    top: $top;
+    right: $right;
+    bottom: $bottom;
+    left: $left
+}
+
+
+// Font Fallback Mixin
+//-------------------------------------------------------------------------------
+
+$fonts-loaded-selector: "fonts-loaded" !default;
+
+@mixin fallback-fonts($size, $fallback-size: null, $line-height: null, $fallback-line-height: null, $letter-spacing: null, $fallback-letter-spacing: null, $weight: null, $fallback-weight: null, $style: null, $fallback-style: null, $loaded-class: $fonts-loaded-selector) {
+    @include rem($size, font-size);
+    line-height: $line-height;
+    letter-spacing: $letter-spacing;
+    font-weight: $weight;
+    font-style: $style;
+
+    html:not(.#{$loaded-class}) & {
+        @if $fallback-size != null {
+            @include rem($fallback-size, font-size);
+        }
+        @else {
+            @include rem(ceil($size*0.88), font-size);
+        }
+
+        line-height: $fallback-line-height;
+        letter-spacing: $fallback-letter-spacing;
+        font-weight: $fallback-weight;
+        font-style: $fallback-style;
+    }
+}
+
+
+// List Style Reset Mixin
+//-------------------------------------------------------------------------------
+
+@mixin list-reset($margin: 0, $padding: 0, $padding-property: null) {
+    margin: $margin;
+    
+    @if $padding-property != null {
+        padding-#{$padding-property}: $padding;
+    }
+    @else {
+        padding: $padding;
+    }
+
+    list-style: none;
+}
+
+
+// Borders Mixin
+//-------------------------------------------------------------------------------
+
+@mixin borders($sides, $values...) {
+    @if length($values) > 1 {
+        @each $side in $sides {
+            border-#{$side}: nth($values, index($sides, $side));
+        }
+    }
+    @else {
+        @each $side in $sides {
+            border-#{$side}: $values;
+        }
+    }
+}
+
+
+// CSS Triangle Mixin
+//-------------------------------------------------------------------------------
+
+// Creates a CSS triangle
+// ---
+// @param {number} $width
+// @param {number} $height
+// @param {string} $color
+// @param {string} $facing [right | left | up | down]
+// ---
+@mixin triangle($width, $height, $color, $facing: right) {
+    width: 0;
+    height: 0;
+
+    @if $facing == up {
+        border-right: $width/2 solid transparent;
+        border-bottom: $height solid $color;
+        border-left: $width/2 solid transparent;
+    }
+    @else if $facing == down {
+        border-top: $height solid $color;
+        border-right: $width/2 solid transparent;
+        border-left: $width/2 solid transparent;
+    }
+    @else if $facing == right {
+        border-top: $height/2 solid transparent;
+        border-bottom: $height/2 solid transparent;
+        border-left: $width solid $color;
+    }
+    @else if $facing == left {
+        border-top: $height/2 solid transparent;
+        border-right: $width solid $color;
+        border-bottom: $height/2 solid transparent;
+    }
+}
+
+
+// Pseudo Character Entities Mixin
+//-------------------------------------------------------------------------------
+
+@mixin entity($name) {
+    $entities: (
+        "opening quote": "\201C",
+        "closing quote": "\201D",
+        "left arrow": "\2190",
+        "up arrow": "\2191",
+        "right arrow": "\2192",
+        "down arrow": "\2193",
+        "single chevron left": "\2039",
+        "single chevron right": "\203A",
+        "double chevron left": "\00AB",
+        "double chevron right": "\00BB",
+        "checkmark": "\2713",
+        "bullet": "\2022",
+        "ellipsis": "\2026"
+    ) !default;
+
+    @if map-has-key($entities, $name) == true {
+        @each $entity-name, $entity-value in $entities {
+            @if $entity-name == $name {
+                content: $entity-value;
+            }
+        }
+    }
+    @else {
+        @warn "The name you entered isn't associated with an entity offered by this mixin. Ensure that it is spelled correctly, or add it to the entities map.";
+    }
+}
+
+
+// Form Field Placeholder Text Mixin
+//-------------------------------------------------------------------------------
+
+@mixin placeholder {
+    $placeholders: ":-webkit-input", ":-moz", "-moz", "-ms-input";
+    @each $placeholder in $placeholders {
+        &:#{$placeholder}-placeholder {
+            @content;
+        }
+    }
+}
+
+
+// Selected Text Mixin
+//-------------------------------------------------------------------------------
+
+@mixin selection {
+    $selections: "-moz-", "";
+    @each $selection in $selections {
+        ::#{$selection}selection {
+            @content;
+        }
+    }
+}

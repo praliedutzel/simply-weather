@@ -1,0 +1,46 @@
+//-------------------------------------------------------------------------------
+// Weather Component
+//-------------------------------------------------------------------------------
+
+.weather-details {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+}
+
+.weather-details__item {
+    width: 100%;
+    padding: 1em;
+
+    &:nth-child(2) {
+        border-top: 1px solid #ccc;
+        border-bottom: 1px solid #ccc;
+    }
+
+    @include bp($bp-xs) {
+        width: 33.333%;
+
+        &:nth-child(2) {
+            border-top: none;
+            border-bottom: none;
+            border-right: 1px solid #ccc;
+            border-left: 1px solid #ccc;
+        }
+    }
+}
+
+.weather-details__label {
+    display: block;
+    color: #999;
+    font-size: 0.75em;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.weather-details__value {
+    display: block;
+    font-size: 1.5em;
+}

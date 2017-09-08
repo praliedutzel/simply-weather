@@ -1,0 +1,15 @@
+{
+  "name": "simply-weather",
+  "version": "1.0.0",
+  "description": "A simple weather app built with Serverless.",
+  "main": "handler.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "author": "Pralie Dutzel",
+  "license": "ISC",
+  "dependencies": {
+    "limiter": "^1.1.2",
+    "node-fetch": "^1.7.2"
+  }
+}

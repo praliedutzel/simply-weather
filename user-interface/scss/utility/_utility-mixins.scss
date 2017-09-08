@@ -1,0 +1,128 @@
+//-------------------------------------------------------------------------------//
+//---UTILITY MIXINS--------------------------------------------------------------//
+//-------------------------------------------------------------------------------//
+
+
+// Box-Sizing Model Mixin
+//-------------------------------------------------------------------------------
+
+@mixin border-box($box-model: border-box) {
+    html { box-sizing: $box-model; }
+    *, *:before, *:after { box-sizing: inherit; }
+}
+
+
+// Clearfix Mixin
+//-------------------------------------------------------------------------------
+
+@mixin clearfix {
+    &:after {
+        content: '';
+        display: table;
+        clear: both;
+    }
+}
+
+
+// Visually Hidden Mixin
+//-------------------------------------------------------------------------------
+
+@mixin hidden {
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    position: absolute;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    clip: rect(0, 0, 0, 0);
+}
+
+
+// Pixel Fallback for REM Units Mixin
+//-------------------------------------------------------------------------------
+
+@mixin rem($prop, $pixels, $important: false) {
+    // Check if there are more than four possible values
+    @if (length($pixels) <= 4) {
+        #{$prop}: $pixels#{if($important, ' !important', '')};
+
+        // Create an empty list to add converted pixel values to
+        $list: null;
+
+        // For each value for pixels, convert to rems and append to list
+        @each $px-val in $pixels {
+            @if (type-of($px-val) == "number") {
+                @if (unit($px-val) == "px" and $px-val != 0px) {
+                    $list: append($list, px2rem($px-val), space);
+                }
+                @else if ($px-val == 0 or $px-val == 0px) {
+                    $list: append($list, strip-units($px-val), space);
+                }
+                @else {
+                    $list: append($list, $px-val, space);
+                }
+            }
+            @else {
+                $list: append($list, $px-val, space);                
+            }
+        }
+
+        // Output the converted pixel values
+        #{$prop}: $list#{if($important, ' !important', '')};
+    }
+    @else {
+        @warn "You've entered too many pixel values for the rem mixin. The maximum is four.";
+    }
+}
+
+
+// Pixel Fallback for EM Units Mixin
+//-------------------------------------------------------------------------------
+
+@mixin em($prop, $pixels, $important: false) {
+    // Check if there are more than four possible values
+    @if (length($pixels) <= 4) {
+        #{$prop}: $pixels#{if($important, ' !important', '')};
+
+        // Create an empty list to add converted pixel values to
+        $list: null;
+
+        // For each value for pixels, convert to ems and append to list
+        @each $px-val in $pixels {
+            @if (type-of($px-val) == "number") {
+                @if (unit($px-val) == "px" and $px-val != 0px) {
+                    $list: append($list, px2em($px-val), space);
+                }
+                @else if ($px-val == 0 or $px-val == 0px) {
+                    $list: append($list, strip-units($px-val), space);
+                }
+                @else {
+                    $list: append($list, $px-val, space);
+                }
+            }
+            @else {
+                $list: append($list, $px-val, space);                
+            }
+        }
+
+        // Output the converted pixel values
+        #{$prop}: $list#{if($important, ' !important', '')};
+    }
+    @else {
+        @warn "You've entered too many pixel values for the em mixin. The maximum is four.";
+    }
+}
+
+
+// Flexbox Mixin
+//-------------------------------------------------------------------------------
+
+@mixin flexbox($direction: null, $wrap: null, $justify-content: null, $align-items: null, $align-content: null) {
+    display: flex;
+    flex-direction: $direction;
+    flex-wrap: $wrap;
+    justify-content: $justify-content;
+    align-items: $align-items;
+    align-content: $align-content;
+}
